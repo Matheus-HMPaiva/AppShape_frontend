@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import homeImage from '../images/home.png';
 import treinoCasa from '../images/treinoCasa.png';
 import treinoAcademia from '../images/treinoAcademia.png';
+import { Link } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
@@ -96,27 +97,32 @@ export default function Home() {
                             </Grid>
                             <Grid item xs={6}>
                                 <Item>
-                                    <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                        Treino em casa
-                                    </Typography>
-                                    <Box
-                                        component='img'
-                                        src={treinoCasa}
-                                        sx={{
-                                            width: '50%',
-                                        }} />
+                                    <Link style={{ textDecoration: 'none' }} to={'/workout/home'}>
+                                        <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
+                                            Treino em casa
+                                        </Typography>
+                                        <Box
+                                            component='img'
+                                            src={treinoCasa}
+                                            sx={{
+                                                width: '50%',
+                                            }} />
+                                    </Link>
                                 </Item>
                             </Grid>
                             <Grid item xs={6}>
-                                <Item><Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                    Treino na academia
-                                </Typography>
-                                    <Box
-                                        component='img'
-                                        src={treinoAcademia}
-                                        sx={{
-                                            width: '50%',
-                                        }} />
+                                <Item>
+                                    <Link style={{ textDecoration: 'none' }} to={'/workout/gym'}>
+                                        <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
+                                            Treino na academia
+                                        </Typography>
+                                        <Box
+                                            component='img'
+                                            src={treinoAcademia}
+                                            sx={{
+                                                width: '50%',
+                                            }} />
+                                    </Link>
                                 </Item>
                             </Grid>
 
