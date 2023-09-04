@@ -74,9 +74,11 @@ export default function Home() {
                         >
                             <Grid item xs={6}>
                                 <Item>
+                                    <Link to={'/imc'}>
                                     <Button sx={{ width: '100%' }} variant="contained">
                                         Calcular IMC
                                     </Button >
+                                    </Link>
                                 </Item>
                             </Grid>
                         </Grid>
