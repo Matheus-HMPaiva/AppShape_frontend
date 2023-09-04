@@ -68,7 +68,6 @@ export default function IMCCalculator() {
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setHeight(() => e.target.value)}
                                 type="number"
-                                InputProps={{ inputProps: { min: 1, max: 250 } }}
                             />
                             <TextField
                                 margin="normal"
@@ -83,7 +82,6 @@ export default function IMCCalculator() {
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setWeight(() => e.target.value)}
                                 type="number"
-                                InputProps={{ inputProps: { min: 1, max: 1000 } }}
                             />
                             <TextField
                                 margin="normal"
@@ -98,7 +96,6 @@ export default function IMCCalculator() {
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setAge(() => e.target.value)}
                                 type="number"
-                                InputProps={{ inputProps: { min: 1, max: 150 } }}
                             />
                             <Grid mb={6} sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <Grid>
@@ -106,8 +103,9 @@ export default function IMCCalculator() {
                                 </Grid>
                                 {imc &&
                                     <Grid>
-                                        <Typography sx={{ fontSize: 64, color: '#a8bd00', fontWeight: '700', display: 'flex' }}>81,3</Typography>
-                                        <Typography sx={{ fontWeight: 'bold', fontSize: '130%' }}>{message}</Typography>
+                                        <Typography sx={{ fontSize: 64, color: '#a8bd00', fontWeight: '700', display: 'flex' }}>{imc}</Typography>
+                                        <Typography 
+                                        sx={{ fontWeight: 'bold', fontSize: '130%' }}>{message}</Typography>
                                     </Grid>
                                 }
                             </Grid>
