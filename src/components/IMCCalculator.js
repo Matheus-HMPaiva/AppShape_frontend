@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { Button, Grid, Paper, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Paper, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
@@ -49,6 +50,27 @@ export default function IMCCalculator() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
+                <Grid item xs={12} sm={6} md={5} sx={{
+                    position: 'absolute',
+                    width: '50%',
+                }}>
+                    <MenuItem component={Link} to="/home" sx={{
+                        my: 8,
+                        mx: 4,
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        '&:hover': {
+                            backgroundColor: 'transparent',
+                        },
+                    }}>
+                        <Box
+                        >
+                            <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
+                                AppShape
+                            </Typography>
+                        </Box>
+                    </MenuItem>
+                </Grid>
                 <Grid container item alignItems="center" justifyContent="center" xs={12} sm={12} md={12} component={Paper} elevation={12} square sx={{ backgroundColor: '#e3ff00' }}>
                     <Grid item xs={6}>
                         <Item>
@@ -104,8 +126,8 @@ export default function IMCCalculator() {
                                 {imc &&
                                     <Grid>
                                         <Typography sx={{ fontSize: 64, color: '#a8bd00', fontWeight: '700', display: 'flex' }}>{imc}</Typography>
-                                        <Typography 
-                                        sx={{ fontWeight: 'bold', fontSize: '130%' }}>{message}</Typography>
+                                        <Typography
+                                            sx={{ fontWeight: 'bold', fontSize: '130%' }}>{message}</Typography>
                                     </Grid>
                                 }
                             </Grid>
