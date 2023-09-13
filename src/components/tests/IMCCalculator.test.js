@@ -1,9 +1,14 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 import IMCCalculator from "../IMCCalculator";
+import { MemoryRouter } from "react-router-dom";
 
 test("Calculates BMI correctly", () => {
-  render(<IMCCalculator />);
+  render(
+    <MemoryRouter initialEntries={['/imc']}> {/* Set initialEntries as needed */}
+      <IMCCalculator />
+    </MemoryRouter>
+  );
 
   // Get input fields and button
   const heightInput = screen.getByTestId("height");
