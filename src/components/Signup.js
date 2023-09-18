@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react'; // Importe o useState
+import { useState } from 'react'; // Import the useState
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,12 +9,14 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
-import axios from 'axios'; // Importe o axios
+import axios from 'axios'; // Import axios
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-export default function Login({setIsLoggedIn}) {
-  const [error, setError] = useState(null); // Estado para controlar erros
+export default function Signup({ setIsLoggedIn }) {
+  const [error, setError] = useState(null); // State to handle errors
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -22,7 +24,8 @@ export default function Login({setIsLoggedIn}) {
     const password = data.get('password');
 
     try {
-      const response = await axios.post('http://localhost:3000/users/login', {
+      // Replace the URL with the endpoint for creating a new account
+      const response = await axios.post('http://localhost:3000/users/signup', {
         email: email,
         password: password,
       });
@@ -30,10 +33,10 @@ export default function Login({setIsLoggedIn}) {
       if (response.data) {
         setIsLoggedIn(true);
       } else {
-        setError('Credenciais inválidas.');
+        setError('Unable to create an account. Please try again.');
       }
     } catch (error) {
-      setError('Ocorreu um erro ao fazer login.');
+      setError('An error occurred while creating an account.');
     }
   };
 
@@ -76,15 +79,14 @@ export default function Login({setIsLoggedIn}) {
                 type="password"
                 id="password"
                 inputProps={{ 'data-testid': 'password' }}
-                autoComplete="current-password"
+                autoComplete="new-password"
                 sx={{ backgroundColor: 'white' }}
               />
-
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                Entrar
+                Criar Conta {/* Change button label */}
               </Button>
             </Box>
-              {error && <Typography color="error">{error}</Typography>}
+            {error && <Typography color="error">{error}</Typography>}
           </Box>
         </Grid>
         <Grid

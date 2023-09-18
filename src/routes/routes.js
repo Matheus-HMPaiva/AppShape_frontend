@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "../components/Login";
 import Home from "../components/Home";
 import HomeWorkout from "../components/HomeWorkout";
 import GymWorkout from "../components/GymWorkout";
 import IMCCalculator from "../components/IMCCalculator";
+import Protected from "../components/Protected";
 
 const Rotas = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+    const logIn = () => {
+        setIsLoggedIn(true);
+    };
+
+    const logOut = () => {
+        setIsLoggedIn(false);
+    };
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login/>} />
-                <Route path="/home" element={<Home/>} />
-                <Route path="/workout/home" element={<HomeWorkout/>} />
-                <Route path="/workout/gym" element={<GymWorkout/>} />
-                <Route path="/imc" element={<IMCCalculator/>} />
+                <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/home" element={
+                    <Protected isLoggedIn={isLoggedIn}>
+                        <Home />
+                    </Protected>}
+                />
+                <Route path="/workout/home" element={
+                    <Protected isLoggedIn={isLoggedIn}>
+                        <HomeWorkout />
+                    </Protected>}
+                />
+                <Route path="/workout/gym" element={
+                    <Protected isLoggedIn={isLoggedIn}>
+                        <GymWorkout />
+                    </Protected>}
+                />
+                <Route path="/imc" element={
+                    <Protected>
+                        <IMCCalculator />
+                    </Protected>}
+                />
             </Routes>
         </BrowserRouter>
     )
