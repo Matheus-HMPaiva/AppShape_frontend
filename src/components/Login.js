@@ -10,10 +10,11 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
 import axios from 'axios'; // Importe o axios
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-export default function Login({setIsLoggedIn}) {
+export default function Login({ setIsLoggedIn }) {
   const [error, setError] = useState(null); // Estado para controlar erros
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ export default function Login({setIsLoggedIn}) {
     try {
       const response = await axios.post('http://localhost:3000/users/login', {
         email: email,
-        password: password,
+        senha: password,
       });
 
       if (response.data) {
@@ -54,7 +55,7 @@ export default function Login({setIsLoggedIn}) {
             <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
               AppShape
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} maxWidth={'80%'}>
               <TextField
                 margin="normal"
                 required
@@ -79,12 +80,19 @@ export default function Login({setIsLoggedIn}) {
                 autoComplete="current-password"
                 sx={{ backgroundColor: 'white' }}
               />
-
+              <Link href="#" variant="body2">
+                Esqueceu a senha?
+              </Link>
+              <Grid item sx={{mt: 1}}>
+                <Link to={'/signup'} variant="body2">
+                  {"Não tem uma conta? Crie uma"}
+                </Link>
+              </Grid>
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Entrar
               </Button>
             </Box>
-              {error && <Typography color="error">{error}</Typography>}
+            {error && <Typography color="error">{error}</Typography>}
           </Box>
         </Grid>
         <Grid
@@ -102,6 +110,6 @@ export default function Login({setIsLoggedIn}) {
           }}
         />
       </Grid>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }

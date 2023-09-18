@@ -6,6 +6,7 @@ import HomeWorkout from "../components/HomeWorkout";
 import GymWorkout from "../components/GymWorkout";
 import IMCCalculator from "../components/IMCCalculator";
 import Protected from "../components/Protected";
+import Signup from "../components/Signup";
 
 const Rotas = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -22,6 +23,7 @@ const Rotas = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/home" element={
                     <Protected isLoggedIn={isLoggedIn}>
                         <Home />

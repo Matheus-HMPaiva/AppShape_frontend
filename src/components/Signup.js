@@ -22,21 +22,33 @@ export default function Signup({ setIsLoggedIn }) {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
+    const passwordConfirm = data.get('passwordConfirm');
+    const name = data.get('name');
 
+    if(password !== passwordConfirm){
+      setError('As senhas digitadas não coincidem.');
+      return;
+    }
+
+    if(!email || !password || !name || !passwordConfirm){
+      setError('O preenchimento de todos os campos é obrigatório.');
+      return;
+    }
     try {
       // Replace the URL with the endpoint for creating a new account
       const response = await axios.post('http://localhost:3000/users/signup', {
+        nome: name,
         email: email,
-        password: password,
+        senha: password,
       });
 
       if (response.data) {
         setIsLoggedIn(true);
       } else {
-        setError('Unable to create an account. Please try again.');
+        setError('Não foi possível criar a conta. Por favor tente novamente..');
       }
     } catch (error) {
-      setError('An error occurred while creating an account.');
+      setError('Um erro ocorreu durante a criação da conta.');
     }
   };
 
@@ -57,7 +69,19 @@ export default function Signup({ setIsLoggedIn }) {
             <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
               AppShape
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} maxWidth={'80%'}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Nome"
+                name="name"
+                autoComplete="name"
+                autoFocus
+                inputProps={{ 'data-testid': 'name' }}
+                sx={{ backgroundColor: 'white' }}
+              />
               <TextField
                 margin="normal"
                 required
@@ -80,6 +104,18 @@ export default function Signup({ setIsLoggedIn }) {
                 id="password"
                 inputProps={{ 'data-testid': 'password' }}
                 autoComplete="new-password"
+                sx={{ backgroundColor: 'white' }}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="passwordConfirm"
+                label="Confirme a senha"
+                type="password"
+                id="passwordConfirm"
+                inputProps={{ 'data-testid': 'passwordConfirm' }}
+                autoComplete="confirm-password"
                 sx={{ backgroundColor: 'white' }}
               />
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
