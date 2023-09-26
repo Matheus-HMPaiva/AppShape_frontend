@@ -43,6 +43,8 @@ export default function Signup({ setIsLoggedIn }) {
       });
 
       if (response.data) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user_id", response.data._id);
         setIsLoggedIn(true);
       } else {
         setError('Não foi possível criar a conta. Por favor tente novamente..');
@@ -118,6 +120,11 @@ export default function Signup({ setIsLoggedIn }) {
                 autoComplete="confirm-password"
                 sx={{ backgroundColor: 'white' }}
               />
+              <Grid item sx={{mt: 1}}>
+                <Link to={'/'} variant="body2">
+                  {"Já possui uma conta? Entrar"}
+                </Link>
+              </Grid>
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Criar Conta {/* Change button label */}
               </Button>

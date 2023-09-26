@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, Grid, MenuItem, Paper, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const defaultTheme = createTheme();
@@ -18,32 +18,80 @@ export default function IMCCalculator() {
     const [weight, setWeight] = useState(null);
     const [imc, setImc] = useState(null);
     const [message, setMessage] = useState(null);
-
-    const calculate = () => {
-        const tmpImc = (weight / (height ^ 2)).toFixed(2);
+    useEffect(() => {
+        
+        fetchUserData();
+    }, []);
+    // Função para buscar os dados do usuário ao carregar a página
+    const fetchUserData = async() => {
+      try {
+        const userId = localStorage.getItem('user_id');
+        const response = await fetch(
+          `http://localhost:3000/imc?user_id=${userId}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setHeight(data.imc.height);
+          setAge(data.imc.age);
+          setWeight(data.imc.weight);
+        } else {
+          console.error("Erro ao buscar os dados do usuário na API.");
+        }
+      } catch (error) {
+        console.error("Ocorreu um erro ao fazer a solicitação:", error);
+      }
+    }
+    
+    const calculate = async() => {
+        const tmpHeight = height / 100;
+        const tmpImc = Number((weight / (tmpHeight ^ 2)).toFixed(2));
         if (tmpImc < 18.5) {
             setImc(tmpImc);
             setMessage('Abaixo do peso');
         }
-        else if (imc >= 18.5 && imc <= 24.99) {
+        else if (tmpImc >= 18.5 && tmpImc <= 24.99) {
             setImc(tmpImc);
             setMessage("Peso Ideal");
         }
-        else if (imc > 24.99 && imc < 30) {
+        else if (tmpImc > 24.99 && tmpImc < 30) {
             setImc(tmpImc);
             setMessage("Sobrepeso");
         }
-        else if (imc >= 30 && imc < 35) {
+        else if (imc >= 30 && tmpImc < 35) {
             setImc(tmpImc);
             setMessage("Obesidade Moderada");
         }
-        else if (imc >= 35 && imc < 40) {
+        else if (tmpImc >= 35 && tmpImc < 40) {
             setImc(tmpImc);
             setMessage("Obesidade Severa");
         }
-        else if (imc >= 40) {
+        else if (tmpImc >= 40) {
             setImc(tmpImc);
             setMessage("Obesidade Mórbida");
+        } 
+        try {
+            const userId = localStorage.getItem('user_id');
+            const response = await fetch('http://localhost:3000/imc', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: userId, // Substitua pelo ID do usuário correto
+                    height: height,
+                    age: age,
+                    weight: weight,
+                    imc: tmpImc,
+                }),
+            });
+
+            if (response.ok) {
+                console.log('Dados enviados com sucesso para o servidor.');
+            } else {
+                console.error('Erro ao enviar os dados para o servidor.');
+            }
+        } catch (error) {
+            console.error('Ocorreu um erro ao fazer a solicitação:', error);
         }
     }
 
@@ -86,6 +134,8 @@ export default function IMCCalculator() {
                                 name="height"
                                 autoComplete="height"
                                 autoFocus
+                                InputLabelProps={{ shrink: height ? true : false }}
+                                value={height ? height : null}
                                 inputProps={{ "data-testid": "height" }}
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setHeight(() => e.target.value)}
@@ -100,6 +150,8 @@ export default function IMCCalculator() {
                                 name="weight"
                                 autoComplete="weight"
                                 autoFocus
+                                InputLabelProps={{ shrink: weight ? true : false }}
+                                value={weight ? weight : null}
                                 inputProps={{ "data-testid": "weight" }}
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setWeight(() => e.target.value)}
@@ -114,6 +166,8 @@ export default function IMCCalculator() {
                                 name="age"
                                 autoComplete="age"
                                 autoFocus
+                                InputLabelProps={{ shrink: age ? true : false }}
+                                value={age ? age : null}
                                 inputProps={{ "data-testid": "age" }}
                                 sx={{ backgroundColor: '#F5F5F5' }}
                                 onChange={(e) => setAge(() => e.target.value)}

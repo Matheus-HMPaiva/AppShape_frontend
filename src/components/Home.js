@@ -16,10 +16,25 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-export default function Home() {
+const LogoutButton = styled(Button)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+
+export default function Home({ setIsLoggedIn }) {
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
+        setIsLoggedIn(false);
+    };
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
+                <LogoutButton variant="outlined" onClick={handleLogout}>
+                    Sair
+                </LogoutButton>
                 <Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square sx={{ backgroundColor: '#e3ff00' }}>
                     <Box
                         sx={{
@@ -75,9 +90,9 @@ export default function Home() {
                             <Grid item xs={6}>
                                 <Item>
                                     <Link to={'/imc'}>
-                                    <Button sx={{ width: '100%' }} variant="contained">
-                                        Calcular IMC
-                                    </Button >
+                                        <Button sx={{ width: '100%' }} variant="contained">
+                                            Calcular IMC
+                                        </Button >
                                     </Link>
                                 </Item>
                             </Grid>

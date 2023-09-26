@@ -10,11 +10,12 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
 import axios from 'axios'; // Importe o axios
-import { Link } from 'react-router-dom';
+import { Link, redirect, unstable_HistoryRouter, useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 export default function Login({ setIsLoggedIn }) {
+  const navigate = useNavigate();
   const [error, setError] = useState(null); // Estado para controlar erros
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,10 +31,14 @@ export default function Login({ setIsLoggedIn }) {
 
       if (response.data) {
         setIsLoggedIn(true);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user_id", response.data.id);
+        navigate("/home");
       } else {
         setError('Credenciais inválidas.');
       }
     } catch (error) {
+      console.log("🚀 ~ file: Login.js:40 ~ handleSubmit ~ error:", error)
       setError('Ocorreu um erro ao fazer login.');
     }
   };

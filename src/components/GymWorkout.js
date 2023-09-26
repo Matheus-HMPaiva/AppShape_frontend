@@ -61,7 +61,7 @@ export default function GymWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Braço</Typography>
-                                    <a href="https://www.youtube.com/shorts/jsntw4tVAgQ" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/jsntw4tVAgQ" style={{ "textDecoration": "none !important", "color": "inherit" }} >
                                     <Box
                                         component='img'
                                         src={tricepsCorda}
@@ -73,7 +73,7 @@ export default function GymWorkout() {
                                     </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/JTA0ikBvJrY" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/JTA0ikBvJrY" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={roscaBarraW}
@@ -89,7 +89,7 @@ export default function GymWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Perna</Typography>
-                                    <a href="https://www.youtube.com/shorts/hUUGdvTNSo0" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/hUUGdvTNSo0" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={legPress45}
@@ -101,7 +101,7 @@ export default function GymWorkout() {
                                     </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/5bNIy8N8Dxs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/5bNIy8N8Dxs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={panturrila}
@@ -117,7 +117,7 @@ export default function GymWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Costas e posterior de ombro</Typography>
-                                    <a href="https://www.youtube.com/shorts/2s9GukbzI3s" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/2s9GukbzI3s" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={remadaSerrote}
@@ -129,7 +129,7 @@ export default function GymWorkout() {
                                     </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/ygRYqPsZr5U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/ygRYqPsZr5U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={remadaCavalinho}
@@ -145,7 +145,7 @@ export default function GymWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Peito e ombro</Typography>
-                                    <a href="https://www.youtube.com/shorts/Js-ziVg6lqA" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/Js-ziVg6lqA" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={supinoReto}
@@ -157,7 +157,7 @@ export default function GymWorkout() {
                                     </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/_N6tFhPtr2U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/_N6tFhPtr2U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                     <Box
                                         component='img'
                                         src={crucifixo}

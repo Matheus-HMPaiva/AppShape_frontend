@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Login from "../components/Login";
 import Home from "../components/Home";
 import HomeWorkout from "../components/HomeWorkout";
@@ -9,24 +9,36 @@ import Protected from "../components/Protected";
 import Signup from "../components/Signup";
 
 const Rotas = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        // Verifique se o token está presente no armazenamento local ou nos cookies
+        const token = localStorage.getItem("token"); // ou lógica para obter o token de cookies
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     const logIn = () => {
         setIsLoggedIn(true);
+        // Salve o token no armazenamento local ou nos cookies
+        localStorage.setItem("token", "seu_token_aqui"); // ou lógica para definir cookies
     };
 
     const logOut = () => {
         setIsLoggedIn(false);
+        // Remova o token do armazenamento local ou dos cookies
+        localStorage.removeItem("token"); // ou lógica para remover cookies
     };
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-                <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/" element={!isLoggedIn ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Navigate to={'/home'} />} />
+                <Route path="/signup" element={!isLoggedIn ? <Signup setIsLoggedIn={setIsLoggedIn} /> : <Navigate to={'/home'} />} />
                 <Route path="/home" element={
                     <Protected isLoggedIn={isLoggedIn}>
-                        <Home />
+                        <Home setIsLoggedIn={setIsLoggedIn}/>
                     </Protected>}
                 />
                 <Route path="/workout/home" element={
@@ -40,7 +52,7 @@ const Rotas = () => {
                     </Protected>}
                 />
                 <Route path="/imc" element={
-                    <Protected>
+                    <Protected isLoggedIn={isLoggedIn}>
                         <IMCCalculator />
                     </Protected>}
                 />

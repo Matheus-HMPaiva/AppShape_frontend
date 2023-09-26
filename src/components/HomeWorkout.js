@@ -60,7 +60,7 @@ export default function HomeWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Braço</Typography>
-                                    <a href="https://www.youtube.com/shorts/p_DeBmkbCUc" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/p_DeBmkbCUc" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={tricepsBanco}
@@ -71,7 +71,7 @@ export default function HomeWorkout() {
                                             Triceps banco
                                         </Typography></a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/0T7V5o9ypUw" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/0T7V5o9ypUw" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={roscaDireta}
@@ -87,7 +87,7 @@ export default function HomeWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Perna</Typography>
-                                    <a href="https://www.youtube.com/shorts/AmpX2jRn9fs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/AmpX2jRn9fs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={agachamento}
@@ -99,7 +99,7 @@ export default function HomeWorkout() {
                                         </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/XyAlBa5Io1Y" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/XyAlBa5Io1Y" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={agachamentoBulgaro}
@@ -115,7 +115,7 @@ export default function HomeWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Costas e posterior de ombro</Typography>
-                                    <a href="https://www.youtube.com/shorts/jbar9KxxfWs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/jbar9KxxfWs" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={puxadaComHalter}
@@ -127,7 +127,7 @@ export default function HomeWorkout() {
                                         </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/watch?v=gAV_qIi53eo" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=gAV_qIi53eo" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={superman}
@@ -143,7 +143,7 @@ export default function HomeWorkout() {
                             <Grid item xs={3}>
                                 <Item>
                                     <Typography my={2} variant="h4" >Peito e ombro</Typography>
-                                    <a href="https://www.youtube.com/watch?v=m5q0mLp-ZjQ" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=m5q0mLp-ZjQ" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={flexaoBraco}
@@ -155,7 +155,7 @@ export default function HomeWorkout() {
                                         </Typography>
                                     </a>
                                     <Divider sx={{ my: 4 }} />
-                                    <a href="https://www.youtube.com/shorts/_N6tFhPtr2U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
+                                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/shorts/_N6tFhPtr2U" style={{ "textDecoration": "none !important", "color": "inherit" }}>
                                         <Box
                                             component='img'
                                             src={flexaoDeclinada}
