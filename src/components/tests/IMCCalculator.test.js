@@ -25,8 +25,8 @@ test("Calculates BMI correctly", () => {
   fireEvent.click(calculateButton);
 
   // Check if the BMI and message are displayed correctly
-  const bmiValue = screen.getByText("0.40"); // Update this with the expected BMI value after fixing the calculation in your component
-  const message = screen.getByText("Abaixo do peso"); // Update this with the expected message based on the BMI calculation
+  const bmiValue = screen.getByText("23.33"); // Update this with the expected BMI value after fixing the calculation in your component
+  const message = screen.getByText("Peso Ideal"); // Update this with the expected message based on the BMI calculation
 
   expect(bmiValue).toBeInTheDocument();
   expect(message).toBeInTheDocument();

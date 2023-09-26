@@ -9,7 +9,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
-import axios from 'axios'; // Import axios
 import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
@@ -25,29 +24,37 @@ export default function Signup({ setIsLoggedIn }) {
     const passwordConfirm = data.get('passwordConfirm');
     const name = data.get('name');
 
-    if(password !== passwordConfirm){
+    if (password !== passwordConfirm) {
       setError('As senhas digitadas não coincidem.');
       return;
     }
 
-    if(!email || !password || !name || !passwordConfirm){
+    if (!email || !password || !name || !passwordConfirm) {
       setError('O preenchimento de todos os campos é obrigatório.');
       return;
     }
+
     try {
       // Replace the URL with the endpoint for creating a new account
-      const response = await axios.post('http://localhost:3000/users/signup', {
-        nome: name,
-        email: email,
-        senha: password,
+      const response = await fetch('http://localhost:3000/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: name,
+          email: email,
+          senha: password,
+        }),
       });
 
-      if (response.data) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user_id", response.data._id);
+      if (response.ok) {
+        const responseData = await response.json();
+        localStorage.setItem('token', responseData.token);
+        localStorage.setItem('user_id', responseData._id);
         setIsLoggedIn(true);
       } else {
-        setError('Não foi possível criar a conta. Por favor tente novamente..');
+        setError('Não foi possível criar a conta. Por favor, tente novamente.');
       }
     } catch (error) {
       setError('Um erro ocorreu durante a criação da conta.');
@@ -120,7 +127,7 @@ export default function Signup({ setIsLoggedIn }) {
                 autoComplete="confirm-password"
                 sx={{ backgroundColor: 'white' }}
               />
-              <Grid item sx={{mt: 1}}>
+              <Grid item sx={{ mt: 1 }}>
                 <Link to={'/'} variant="body2">
                   {"Já possui uma conta? Entrar"}
                 </Link>

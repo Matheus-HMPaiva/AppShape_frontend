@@ -9,36 +9,46 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
-import axios from 'axios'; // Importe o axios
-import { Link, redirect, unstable_HistoryRouter, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 export default function Login({ setIsLoggedIn }) {
   const navigate = useNavigate();
   const [error, setError] = useState(null); // Estado para controlar erros
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
     const email = data.get('email');
     const password = data.get('password');
 
     try {
-      const response = await axios.post('http://localhost:3000/users/login', {
-        email: email,
-        senha: password,
+      const response = await fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          senha: password,
+        }),
       });
-
-      if (response.data) {
+      if (response.ok) {
+        const responseData = await response.json();
         setIsLoggedIn(true);
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user_id", response.data.id);
-        navigate("/home");
+        localStorage.setItem('token', responseData.token);
+        localStorage.setItem('user_id', responseData.id);
+        navigate('/home');
       } else {
         setError('Credenciais inválidas.');
       }
     } catch (error) {
-      console.log("🚀 ~ file: Login.js:40 ~ handleSubmit ~ error:", error)
+      console.error('Ocorreu um erro ao fazer login:', error);
       setError('Ocorreu um erro ao fazer login.');
     }
   };
@@ -88,7 +98,7 @@ export default function Login({ setIsLoggedIn }) {
               <Link href="#" variant="body2">
                 Esqueceu a senha?
               </Link>
-              <Grid item sx={{mt: 1}}>
+              <Grid item sx={{ mt: 1 }}>
                 <Link to={'/signup'} variant="body2">
                   {"Não tem uma conta? Crie uma"}
                 </Link>
@@ -115,6 +125,6 @@ export default function Login({ setIsLoggedIn }) {
           }}
         />
       </Grid>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 }

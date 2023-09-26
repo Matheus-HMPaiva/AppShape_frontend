@@ -19,7 +19,6 @@ export default function IMCCalculator() {
     const [imc, setImc] = useState(null);
     const [message, setMessage] = useState(null);
     useEffect(() => {
-        
         fetchUserData();
     }, []);
     // Função para buscar os dados do usuário ao carregar a página
