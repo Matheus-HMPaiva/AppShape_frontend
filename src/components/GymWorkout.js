@@ -10,14 +10,19 @@ import remadaSerrote from '../images/remadaSerrote.png';
 import remadaCavalinho from '../images/remadaCavalinho.png';
 import supinoReto from '../images/supinoReto.png';
 import crucifixo from '../images/crucifixo.png';
+import yourLogo from "../images/yourLogo.png";
 
 const defaultTheme = createTheme();
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#95d0b8' : '#95d0b8',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
 }));
 
 
@@ -25,11 +30,9 @@ export default function GymWorkout() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
-                <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square sx={{ backgroundColor: '#e3ff00' }}>
+                <Grid item xs={12} sm={12} md={12} square sx={{ backgroundColor: '#fff' }}>
                     <Box
                         sx={{
-                            my: 8,
-                            mx: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'flex-start'
@@ -42,16 +45,20 @@ export default function GymWorkout() {
                                 backgroundColor: 'transparent',
                             },
                         }}>
-                            <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                AppShape
-                            </Typography>
-                            <Typography fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                Treino na Academia
-                            </Typography>
+                            <Box
+                                component="img"
+                                src={yourLogo}
+                                alt="Your Logo"
+                                sx={{
+                                    maxHeight: "50%",
+                                    maxWidth: "50%",
+                                }}
+                            />
                         </MenuItem>
                     </Box>
                     <Box sx={{
-                        flexGrow: 1, my: 8,
+                        flexGrow: 1,
+                        marginBottom: 6,
                         mx: 4,
                         display: 'flex',
                         flexDirection: 'column',
@@ -67,6 +74,7 @@ export default function GymWorkout() {
                                         src={tricepsCorda}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Triceps corda
@@ -79,6 +87,7 @@ export default function GymWorkout() {
                                         src={roscaBarraW}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Rosca W Bíceps
@@ -95,6 +104,7 @@ export default function GymWorkout() {
                                         src={legPress45}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Leg 45º
@@ -107,6 +117,7 @@ export default function GymWorkout() {
                                         src={panturrila}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Panturrilha em Pé
@@ -123,6 +134,7 @@ export default function GymWorkout() {
                                         src={remadaSerrote}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Remada serrote
@@ -135,6 +147,7 @@ export default function GymWorkout() {
                                         src={remadaCavalinho}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Remada cavalinho
@@ -151,6 +164,7 @@ export default function GymWorkout() {
                                         src={supinoReto}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Supino reto
@@ -163,6 +177,7 @@ export default function GymWorkout() {
                                         src={crucifixo}
                                         sx={{
                                             width: '50%',
+                                            height: "auto",
                                         }} />
                                     <Typography component="h2">
                                         Crucifixo

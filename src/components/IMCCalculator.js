@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { Box, Button, Grid, MenuItem, Paper, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import yourLogo from "../images/yourLogo.png";
+
 
 const defaultTheme = createTheme();
 
@@ -99,11 +101,8 @@ export default function IMCCalculator() {
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <Grid item xs={12} sm={6} md={5} sx={{
                     position: 'absolute',
-                    width: '50%',
                 }}>
                     <MenuItem component={Link} to="/home" sx={{
-                        my: 8,
-                        mx: 4,
                         flexDirection: 'column',
                         alignItems: 'center',
                         '&:hover': {
@@ -111,14 +110,17 @@ export default function IMCCalculator() {
                         },
                     }}>
                         <Box
-                        >
-                            <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                AppShape
-                            </Typography>
-                        </Box>
+                                component="img"
+                                src={yourLogo}
+                                alt="Your Logo"
+                                sx={{
+                                    maxHeight: "50%",
+                                    maxWidth: "50%",
+                                }}
+                            />
                     </MenuItem>
                 </Grid>
-                <Grid container item alignItems="center" justifyContent="center" xs={12} sm={12} md={12} component={Paper} elevation={12} square sx={{ backgroundColor: '#e3ff00' }}>
+                <Grid container item alignItems="center" justifyContent="center" xs={12} sm={12} md={12} component={Paper} elevation={12} square sx={{ backgroundColor: '#fcfcd7' }}>
                     <Grid item xs={6}>
                         <Item>
                             <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>

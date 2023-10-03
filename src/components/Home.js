@@ -60,7 +60,7 @@ export default function Home({ setIsLoggedIn }) {
                 <LogoutButton variant="outlined" onClick={handleLogout} color="error">
                     Sair
                 </LogoutButton>
-                <Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Box
                         sx={{
                             my: 8,
@@ -95,7 +95,7 @@ export default function Home({ setIsLoggedIn }) {
                 <Grid container
                     item
                     xs={false}
-                    sm={6}
+                    sm={4}
                     md={7}
                     alignItems="center"
                     justifyContent="center" style={containerStyle}>
