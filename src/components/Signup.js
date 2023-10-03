@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bkImage from '../images/peso.png';
 import { Link } from 'react-router-dom';
+import yourLogo from '../images/yourLogo.png'; // Substitua com o caminho da sua imagem de logotipo
 
 const defaultTheme = createTheme();
 
@@ -65,7 +66,7 @@ export default function Signup({ setIsLoggedIn }) {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ backgroundColor: '#e3ff00' }}>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -75,9 +76,7 @@ export default function Signup({ setIsLoggedIn }) {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-              AppShape
-            </Typography>
+            <img src={yourLogo} alt="Logo" style={{ width: '40%' }} />
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} maxWidth={'80%'}>
               <TextField
                 margin="normal"

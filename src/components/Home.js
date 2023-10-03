@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Paper, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React from "react";
 import styled from "@emotion/styled";
-import homeImage from '../images/home.png';
+import homeImage from '../images/yourLogo.png';
 import treinoCasa from '../images/treinoCasa.png';
 import treinoAcademia from '../images/treinoAcademia.png';
 import { Link } from "react-router-dom";
@@ -22,6 +22,31 @@ const LogoutButton = styled(Button)`
   right: 10px;
 `;
 
+const containerStyle = {
+    background: '#95d0b8',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh',
+    color: '#fff',
+    padding: '20px',
+};
+
+const buttonStyle = {
+    width: '100%',
+    backgroundColor: '#FF5722', // Cor padrão
+    color: '#fff',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s ease', // Adicione uma transição suave
+    '&:hover': {
+        backgroundColor: '#D84315', // Cor ao passar o mouse
+    },
+};
+
+const linkStyle = {
+    textDecoration: 'none',
+    color: '#fff',
+};
 export default function Home({ setIsLoggedIn }) {
 
     const handleLogout = () => {
@@ -32,117 +57,82 @@ export default function Home({ setIsLoggedIn }) {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
-                <LogoutButton variant="outlined" onClick={handleLogout}>
+                <LogoutButton variant="outlined" onClick={handleLogout} color="error">
                     Sair
                 </LogoutButton>
-                <Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square sx={{ backgroundColor: '#e3ff00' }}>
+                <Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square>
                     <Box
                         sx={{
                             my: 8,
-                            mx: 4,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
-                        <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                            AppShape
-                        </Typography>
                         <Grid
                             container
                             direction="column"
                             alignItems="center"
                             justifyContent="center"
+                            textAlign="center"
                             sx={{
                                 minHeight: '50vh',
-                            }}>
+                            }}
+                        >
                             <Box
                                 component='img'
                                 src={homeImage}
+                                alt="Your Logo"
                                 sx={{
-                                    width: '50%',
-                                }} />
+                                    objectFit: 'contain', // Use 'contain' or 'cover' as needed
+                                    maxHeight: '100%',
+                                    maxWidth: '100%',
+                                }}
+                            />
                         </Grid>
                     </Box>
                 </Grid>
-                <Grid
-                    container
+                <Grid container
                     item
                     xs={false}
                     sm={6}
                     md={7}
                     alignItems="center"
-                    justifyContent="center"
-                    style={{
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: '#e3ff00',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                >
+                    justifyContent="center" style={containerStyle}>
                     <Box sx={{ flexGrow: 1 }}>
-                        <Grid
-                            alignItems="center"
-                            justifyContent="center"
-                            container
-                            spacing={2}
-                        >
-                            <Grid item xs={6}>
-                                <Item>
-                                    <Link to={'/imc'}>
-                                        <Button sx={{ width: '100%' }} variant="contained">
+                        <Grid alignItems="center" justifyContent="center" container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <Box textAlign="center">
+                                    <Link to="/imc" style={linkStyle}>
+                                        <Button variant="contained" sx={buttonStyle}>
                                             Calcular IMC
-                                        </Button >
+                                        </Button>
                                     </Link>
-                                </Item>
+                                </Box>
                             </Grid>
                         </Grid>
-                        <Grid
-                            mt={2}
-                            alignItems="center"
-                            justifyContent="center"
-                            container
-                            spacing={1}
-                            paddingX={8}
-                        >
+                        <Grid mt={2} container spacing={1} paddingX={8}>
                             <Grid item xs={12}>
-                                <Item>
-                                    <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                        Selecione o tipo de treino
+                                <Typography component="h5" variant="h5" fontFamily="sans-serif" sx={{ fontWeight: 'bold' }}>
+                                    Qual será o treino de hoje?
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Link to="/workout/home" style={linkStyle}>
+                                    <Typography component="h5" variant="h5" fontFamily="sans-serif" sx={{ fontWeight: 'bold' }}>
+                                        Treino em casa
                                     </Typography>
-                                </Item>
+                                    <Box component="img" src={treinoCasa} sx={{ width: '50%' }} alt="Treino em casa" />
+                                </Link>
                             </Grid>
                             <Grid item xs={6}>
-                                <Item>
-                                    <Link style={{ textDecoration: 'none' }} to={'/workout/home'}>
-                                        <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                            Treino em casa
-                                        </Typography>
-                                        <Box
-                                            component='img'
-                                            src={treinoCasa}
-                                            sx={{
-                                                width: '50%',
-                                            }} />
-                                    </Link>
-                                </Item>
+                                <Link to="/workout/gym" style={linkStyle}>
+                                    <Typography component="h5" variant="h5" fontFamily="sans-serif" sx={{ fontWeight: 'bold' }}>
+                                        Treino na academia
+                                    </Typography>
+                                    <Box component="img" src={treinoAcademia} sx={{ width: '50%' }} alt="Treino na academia" />
+                                </Link>
                             </Grid>
-                            <Grid item xs={6}>
-                                <Item>
-                                    <Link style={{ textDecoration: 'none' }} to={'/workout/gym'}>
-                                        <Typography component="h5" variant="h5" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-                                            Treino na academia
-                                        </Typography>
-                                        <Box
-                                            component='img'
-                                            src={treinoAcademia}
-                                            sx={{
-                                                width: '50%',
-                                            }} />
-                                    </Link>
-                                </Item>
-                            </Grid>
-
                         </Grid>
                     </Box>
                 </Grid>

@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react'; // Importe o useState
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,14 +7,22 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import bkImage from '../images/peso.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-const defaultTheme = createTheme();
+import bkImage from '../images/peso.png';
+import yourLogo from '../images/yourLogo.png'; // Substitua com o caminho da sua imagem de logotipo
 
-export default function Login({ setIsLoggedIn }) {
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#007bff', // Altere a cor primária conforme necessário
+    },
+  },
+});
+
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
-  const [error, setError] = useState(null); // Estado para controlar erros
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +41,7 @@ export default function Login({ setIsLoggedIn }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: email,
+          email,
           senha: password,
         }),
       });
@@ -54,10 +61,10 @@ export default function Login({ setIsLoggedIn }) {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ backgroundColor: '#e3ff00' }}>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -67,10 +74,8 @@ export default function Login({ setIsLoggedIn }) {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h2" fontFamily={'sans-serif'} sx={{ fontWeight: 'bold' }}>
-              AppShape
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} maxWidth={'80%'}>
+            <img src={yourLogo} alt="Logo" style={{ width: '40%' }} />
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <TextField
                 margin="normal"
                 required
@@ -81,7 +86,6 @@ export default function Login({ setIsLoggedIn }) {
                 autoComplete="email"
                 autoFocus
                 inputProps={{ 'data-testid': 'email' }}
-                sx={{ backgroundColor: 'white' }}
               />
               <TextField
                 margin="normal"
@@ -93,21 +97,23 @@ export default function Login({ setIsLoggedIn }) {
                 id="password"
                 inputProps={{ 'data-testid': 'password' }}
                 autoComplete="current-password"
-                sx={{ backgroundColor: 'white' }}
               />
-              <Link href="#" variant="body2">
-                Esqueceu a senha?
+              <Link href="#" variant="body2" sx={{ mt: 2 }}>
+                Esqueceu sua senha?
               </Link>
-              <Grid item sx={{ mt: 1 }}>
-                <Link to={'/signup'} variant="body2">
-                  {"Não tem uma conta? Crie uma"}
-                </Link>
-              </Grid>
+              <div>&nbsp;</div>
+              <Link to={'/signup'} variant="body2" sx={{ mt: 2 }}>
+                Não tem uma conta? Crie uma
+              </Link>
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Entrar
               </Button>
             </Box>
-            {error && <Typography color="error">{error}</Typography>}
+            {error && (
+              <Typography color="error" sx={{ mt: 2 }}>
+                {error}
+              </Typography>
+            )}
           </Box>
         </Grid>
         <Grid
@@ -127,4 +133,6 @@ export default function Login({ setIsLoggedIn }) {
       </Grid>
     </ThemeProvider>
   );
-}
+};
+
+export default Login;
