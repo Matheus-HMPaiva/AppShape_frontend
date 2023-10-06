@@ -37,7 +37,7 @@ export default function Signup({ setIsLoggedIn }) {
 
     try {
       // Replace the URL with the endpoint for creating a new account
-      const response = await fetch('http://localhost:3000/users/signup', {
+      const response = await fetch('https://lucky-raincoat-newt.cyclic.app/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

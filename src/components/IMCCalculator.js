@@ -28,7 +28,7 @@ export default function IMCCalculator() {
       try {
         const userId = localStorage.getItem('user_id');
         const response = await fetch(
-          `http://localhost:3000/imc?user_id=${userId}`
+          `https://lucky-raincoat-newt.cyclic.app/imc?user_id=${userId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -72,7 +72,7 @@ export default function IMCCalculator() {
         } 
         try {
             const userId = localStorage.getItem('user_id');
-            const response = await fetch('http://localhost:3000/imc', {
+            const response = await fetch('https://lucky-raincoat-newt.cyclic.app/imc', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

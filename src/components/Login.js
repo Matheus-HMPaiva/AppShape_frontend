@@ -35,7 +35,7 @@ const Login = ({ setIsLoggedIn }) => {
     const password = data.get('password');
 
     try {
-      const response = await fetch('http://localhost:3000/users/login', {
+      const response = await fetch('https://lucky-raincoat-newt.cyclic.app/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
