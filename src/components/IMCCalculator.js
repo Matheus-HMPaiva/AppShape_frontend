@@ -45,7 +45,7 @@ export default function IMCCalculator() {
     
     const calculate = async() => {
         const tmpHeight = height / 100;
-        const tmpImc = Number((weight / (tmpHeight ^ 2)).toFixed(2));
+        const tmpImc = Number((weight / (tmpHeight * tmpHeight)).toFixed(2));
         if (tmpImc < 18.5) {
             setImc(tmpImc);
             setMessage('Abaixo do peso');
