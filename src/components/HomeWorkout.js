@@ -240,7 +240,7 @@ export default function HomeWorkout() {
                                     <a
                                         target="_blank"
                                         rel="noreferrer"
-                                        href="https://www.youtube.com/shorts/_N6tFhPtr2U"
+                                        href="https://www.youtube.com/shorts/6LBPIZCchXk"
                                         style={{ textDecoration: "none !important", color: "inherit" }}
                                     >
                                         <Box
